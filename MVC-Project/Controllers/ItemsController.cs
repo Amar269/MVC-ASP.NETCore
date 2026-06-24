@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC_Project.Data;
 using MVC_Project.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC_Project.Controllers
 {
     public class ItemsController : Controller
     {
-        public IActionResult Overview()
+        private readonly MvcprojectContext _context;
+
+        public ItemsController(MvcprojectContext context)
         {
-            var item = new Item() { Name = "Nothing" };
+            _context = context;
+        }
+        public async Task< IActionResult> Index()
+        {
+            var item = await _context.Items.ToListAsync();
             return View(item);
         }
-
-        public IActionResult Edit(int id)
-        {
-            return Content("id : " + id);
-
-
-        }
+    }
 }
-}
+
