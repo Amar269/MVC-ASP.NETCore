@@ -8,6 +8,8 @@
 
         public string Description { get; set; }
 
+        public long price { get; set; }
+
 
     }
 }

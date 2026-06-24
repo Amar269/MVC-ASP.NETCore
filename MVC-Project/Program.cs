@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MVC_Project.Data;
+
 namespace MVC_Project
 {
     public class Program
@@ -8,6 +12,10 @@ namespace MVC_Project
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<MvcprojectContext>(Options => Options.UseSqlServer(builder.Configuration
+
+             .GetConnectionString("DefaultConnectionString")));
 
             var app = builder.Build();
 

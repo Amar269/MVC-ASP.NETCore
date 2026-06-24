@@ -10,5 +10,12 @@ namespace MVC_Project.Controllers
             var item = new Item() { Name = "Nothing" };
             return View(item);
         }
-    }
-} 
+
+        public IActionResult Edit(int id)
+        {
+            return Content("id : " + id);
+
+
+        }
+}
+}
